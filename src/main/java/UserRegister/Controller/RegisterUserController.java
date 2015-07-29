@@ -38,7 +38,7 @@ public class RegisterUserController {
         student.setName(studentForm.getName());
         student.setPass(studentForm.getPass());
         userRepository.save(student);
-        return "redirect:/users";
+        return "redirect:/usersdelete";
         
     }
 

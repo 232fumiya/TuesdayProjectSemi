@@ -25,7 +25,7 @@ public class UserRegisterApplication implements CommandLineRunner{
         //Create
         student.setId(20511091);
         student.setName("かじわら ゆたか");
-        student.setPass(1);
+        student.setPass("1");
         userRepository.save(student);
         //Select(Read)
         student = userRepository.findOne(20511091);

@@ -19,5 +19,5 @@ public class Student {
     @javax.persistence.Id
     private int id;
     private String name;
-    private int pass;
+    private String pass;
 }

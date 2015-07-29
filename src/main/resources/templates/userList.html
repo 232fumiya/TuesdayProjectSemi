@@ -1,16 +1,27 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head lang="ja">
     <meta charset="UTF-8" />
     <title>ユーザー一覧</title>
 </head>
 <body>
-<table>
-    <tr th:each="user :${users}">
+
+
+    <table>
+       <tr th:each="user :${users}">
         <td th:text="${user.id}"></td>
         <td th:text="${user.name}"></td>
         <td th:text="${user.pass}"></td>
+        <td>
+        <form th:action="@{/usersdelete}" method="post" th:object="${studentForm}">
+                        <input class="btn btn-default" type="submit" name="form" value="削除"/>
+                        <input type="hidden" name="id" th:value="${user.id}"/>
+                        <input type="hidden" name="name" th:value="${user.name}"/>
+                        <input type="hidden" name="pass" th:value="${user.pass}"/>
+        </form>
+        </td>
     </tr>
-</table>
+    </table>
 </body>
 </html>

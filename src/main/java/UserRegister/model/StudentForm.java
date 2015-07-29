@@ -16,5 +16,5 @@ public class StudentForm {
     @NotNull
     private Integer id;
     @NotNull
-    private Integer pass;
+    private String pass;
 }
