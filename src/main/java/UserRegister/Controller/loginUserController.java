@@ -2,7 +2,6 @@ package UserRegister.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -12,36 +11,36 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import UserRegister.Repository.UserRepository;
 import UserRegister.model.Student;
 import UserRegister.model.StudentForm;
-/**
- * Created by KAJIWARAYutaka on 2015/05/02.
- */
+
 @Controller
-@RequestMapping("/users/toppage")
-public class ShowPageController {
-	@Autowired
+@RequestMapping("/users/login")
+public class loginUserController {
+    @Autowired
     UserRepository userRepository;
+    static Student User;
     @ModelAttribute
     StudentForm setupForm(){
         return new StudentForm();
     }
-	
+
     @RequestMapping(method = RequestMethod.GET)
-    public String pageShow(Model model){
-    Student student=loginUserController.User;
-    if(student==null)
-    	return "login";
-    model.addAttribute("student",student);
-       return "index";
+    public String showPage(){
+        return "login";
     }
-    
+
     @RequestMapping(method = RequestMethod.POST)
     public String register(@Validated StudentForm studentForm,BindingResult result){
-        Student user = new Student();
-        user.setId(studentForm.getId());
-        user.setName(studentForm.getName());
-        user.setPass(studentForm.getPass());
-        userRepository.delete(user);
+        Student users = userRepository.findOne(studentForm.getId());
+        String Pass=studentForm.getPass();
+        if(users == null)
         return "redirect:/users/register";
-        
+        if(users.getPass().equals(Pass))
+        {
+        User=users;
+        return "redirect:/users/toppage";
+        }
+        else
+        return "redirect:/users/login";
     }
+
 }

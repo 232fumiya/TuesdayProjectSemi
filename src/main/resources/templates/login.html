@@ -4,24 +4,17 @@
 <head lang="ja">
     <link rel="stylesheet" href="/css/style.css"/>
     <meta charset="UTF-8" />
-    <title>ユーザー登録</title>
+    <title>ログイン</title>
 </head>
 <body>
-<h1>登録画面</h1>
-<form th:action="@{/users/register}" method="post" th:object="${studentForm}">
+<h1>ログイン画面</h1>
+<form th:action="@{/users/login}" method="post" th:object="${studentForm}">
     <table>
         <tr>
             <td>
                 <span>ID:</span>
                 <input name = "id" type="text" th:field="*{id}" th:errorclass="error-input"/>
                 <span th:if="${#fields.hasErrors('id')}" th:errors="*{id}" class="error-message"></span>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <span>Name:</span>
-                <input name = "name" type="text" th:field="*{name}" th:errorclass="error-input"/>
-                <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="error-message"></span>
             </td>
         </tr>
         <tr>
@@ -33,11 +26,10 @@
         </tr>
         <tr>
             <td>
-                <input type="submit" value="登録"/>
+                <input type="submit" value="ログイン"/>
             </td>
         </tr>
     </table>
 </form>
-
 </body>
 </html>

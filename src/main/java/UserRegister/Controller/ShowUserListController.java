@@ -19,7 +19,7 @@ import UserRegister.model.StudentForm;
  * Created by KAJIWARAYutaka on 2015/05/02.
  */
 @Controller
-@RequestMapping("/usersdelete")
+@RequestMapping("/users/delete")
 public class ShowUserListController {
     @Autowired
     UserRepository userRepository;
@@ -43,7 +43,7 @@ public class ShowUserListController {
         student.setName(studentForm.getName());
         student.setPass(studentForm.getPass());
         userRepository.delete(student);
-        return "redirect:/users";
+        return "redirect:/users/login";
         
     }
 }

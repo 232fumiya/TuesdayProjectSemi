@@ -23,12 +23,12 @@ public class UserRegisterApplication implements CommandLineRunner{
     public void run(String... strings) throws Exception {
         Student student = new Student();
         //Create
-        student.setId(20511091);
-        student.setName("かじわら ゆたか");
-        student.setPass("1");
+        student.setId(1);
+        student.setName("nagano fumiya");
+        student.setPass("pass");
         userRepository.save(student);
         //Select(Read)
-        student = userRepository.findOne(20511091);
+        student = userRepository.findOne(1);
         System.out.println("User ID = " + student.getId());
         System.out.println("User Name = " + student.getName());
         System.out.println("User pass="+student.getPass());
@@ -36,7 +36,7 @@ public class UserRegisterApplication implements CommandLineRunner{
         student.setName("梶原 裕");
         userRepository.save(student);
         //Select
-        student = userRepository.findOne(20511091);
+        student = userRepository.findOne(1);
         System.out.println("User ID = " + student.getId());
         System.out.println("User Name = " + student.getName());
         System.out.println("User pass="+student.getPass());
