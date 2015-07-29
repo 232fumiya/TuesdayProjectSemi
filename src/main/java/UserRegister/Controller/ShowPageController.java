@@ -29,7 +29,7 @@ public class ShowPageController {
     public String pageShow(Model model){
     Student student=loginUserController.User;
     if(student==null)
-    	return "login";
+    	return "redirect:/users/login";
     model.addAttribute("student",student);
        return "index";
     }
@@ -41,7 +41,7 @@ public class ShowPageController {
         user.setName(studentForm.getName());
         user.setPass(studentForm.getPass());
         userRepository.delete(user);
-        return "redirect:/users/register";
+        return "redirect:/users/complete";
         
     }
 }

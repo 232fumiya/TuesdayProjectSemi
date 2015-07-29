@@ -7,16 +7,9 @@
     <title>ユーザー登録</title>
 </head>
 <body>
-<h1>登録画面</h1>
-<form th:action="@{/users/register}" method="post" th:object="${studentForm}">
+<h1>更新画面</h1>
+<form th:action="@{/users/update}" method="post" th:object="${updateForm}">
     <table>
-        <tr>
-            <td>
-                <span>ID:</span>
-                <input name = "id" type="text" th:field="*{id}" th:errorclass="error-input"/>
-                <span th:if="${#fields.hasErrors('id')}" th:errors="*{id}" class="error-message"></span>
-            </td>
-        </tr>
         <tr>
             <td>
                 <span>Name:</span>
@@ -33,11 +26,12 @@
         </tr>
         <tr>
             <td>
-                <input type="submit" value="登録"/>
+                <input type="submit" value="更新"/>
             </td>
         </tr>
     </table>
+    <a href="/users/toppage">戻る</a>
 </form>
-<a href="/users/login">ログイン</a>
+
 </body>
 </html>

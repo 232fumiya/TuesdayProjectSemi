@@ -33,7 +33,7 @@ public class UserRegisterApplication implements CommandLineRunner{
         System.out.println("User Name = " + student.getName());
         System.out.println("User pass="+student.getPass());
         //Update
-        student.setName("梶原 裕");
+        student.setName("ながの ふみや");
         userRepository.save(student);
         //Select
         student = userRepository.findOne(1);

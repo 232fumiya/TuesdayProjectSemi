@@ -25,6 +25,8 @@ public class RegisterUserController {
 
     @RequestMapping(method = RequestMethod.GET)
     public String showPage(){
+    	if(loginUserController.User!=null)
+        	loginUserController.User=null;
         return "userRegister";
     }
 
@@ -34,12 +36,16 @@ public class RegisterUserController {
             return showPage();
         }
         Student student = new Student();
+        Student checkId=userRepository.findOne(studentForm.getId());
         student.setId(studentForm.getId());
         student.setName(studentForm.getName());
         student.setPass(studentForm.getPass());
-        userRepository.save(student);
-        return "redirect:/users/login";
+        if(checkId==null)
+	        {
+	        	userRepository.save(student);
+	        	return "redirect:/users/login";
+	        }
+        return "redirect:/users/register";
+    }
         
     }
-
-}

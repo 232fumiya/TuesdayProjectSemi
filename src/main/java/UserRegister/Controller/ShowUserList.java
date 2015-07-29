@@ -15,17 +15,16 @@ import UserRegister.model.Student;
  * Created by KAJIWARAYutaka on 2015/05/02.
  */
 @Controller
-@RequestMapping(value="/")
+@RequestMapping("/users/list")
 public class ShowUserList {
     @Autowired
     UserRepository userRepository;
 
 
-    @RequestMapping(value="users" ,method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.GET)
     public String usersShow(Model model){
         List<Student> users = userRepository.findAll();
         model.addAttribute("users",users);
         return "userList2";
     }
-   
 }

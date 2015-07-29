@@ -10,42 +10,36 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import UserRegister.Repository.UserRepository;
 import UserRegister.model.Student;
-import UserRegister.model.loginForm;
+import UserRegister.model.updateForm;
 
 @Controller
-@RequestMapping("/users/login")
-public class loginUserController {
+@RequestMapping("/users/update")
+public class updateUserController {
     @Autowired
     UserRepository userRepository;
-    static Student User;
+
     @ModelAttribute
-    loginForm setupForm(){
-        return new loginForm();
+    updateForm setupForm(){
+        return new updateForm();
     }
 
     @RequestMapping(method = RequestMethod.GET)
     public String showPage(){
-    	if(User!=null)
-        	User=null;
-        return "login";
+    	if(loginUserController.User==null)
+    		return "redirect:/users/login";
+        return "update";
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public String register(@Validated loginForm studentForm,BindingResult result){
-    	if(result.hasErrors()){
+    public String register(@Validated updateForm studentForm,BindingResult result){
+        if(result.hasErrors()){
             return showPage();
         }
-        Student users = userRepository.findOne(studentForm.getId());
-        String Pass=studentForm.getPass();
-        if(users == null)
-        return "redirect:/users/register";
-        if(users.getPass().equals(Pass))
-        {
-        User=users;
-        return "redirect:/users/toppage";
-        }
-        else
-        return "redirect:/users/login";
+        Student student = loginUserController.User;
+        student.setName(studentForm.getName());
+        student.setPass(studentForm.getPass());
+	    userRepository.save(student);
+	    return "redirect:/users/toppage";
     }
-
-}
+        
+    }

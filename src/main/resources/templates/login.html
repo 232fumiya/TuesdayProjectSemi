@@ -8,7 +8,7 @@
 </head>
 <body>
 <h1>ログイン画面</h1>
-<form th:action="@{/users/login}" method="post" th:object="${studentForm}">
+<form th:action="@{/users/login}" method="post" th:object="${loginForm}">
     <table>
         <tr>
             <td>
@@ -30,6 +30,7 @@
             </td>
         </tr>
     </table>
+    <a href="/users/register">新規登録</a>
 </form>
 </body>
 </html>

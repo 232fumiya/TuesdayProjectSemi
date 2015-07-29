@@ -43,7 +43,7 @@ public class ShowUserListController {
         student.setName(studentForm.getName());
         student.setPass(studentForm.getPass());
         userRepository.delete(student);
-        return "redirect:/users/login";
+        return "redirect:/users/delete";
         
     }
 }
