@@ -36,20 +36,21 @@ d=-d;}
  int BarX=GAMEXY/10;
  int BarY=GAMEXY/100;
  int Bar_Y=GAMEXY-100;
- rect(mouseX-50,Bar_Y,BarX,BarY);
- if(a>=mouseX-50&&a<mouseX-50+40&&b>Bar_Y-10&&b<Bar_Y+20){
+ int Bar_X=BarX/4;
+ rect(mouseX,Bar_Y,BarX,BarY);
+ if(a>=mouseX&&a<mouseX+Bar_X&&b>Bar_Y-10&&b<Bar_Y+20){
  d=-d;
  c=-4;
 }
- if(a>=mouseX-50+40&&a<mouseX-50+80&&b>Bar_Y-10&&b<Bar_Y+20){
+ if(a>=mouseX+Bar_X&&a<mouseX+(Bar_X*2)&&b>Bar_Y-10&&b<Bar_Y+20){
  d=-d;
  c=-2;
 }
- if(a>=mouseX-50+80&&a<mouseX-50+120&&b>Bar_Y-10&&b<Bar_Y+20){
+ if(a>=mouseX+(Bar_X*2)&&a<mouseX+(Bar_X*3)&&b>Bar_Y-10&&b<Bar_Y+20){
  d=-d;
  c=2;
 }
-if(a>=mouseX-50+120&&a<=mouseX-50+160&&b>Bar_Y-10&&b<Bar_Y+20){
+if(a>=mouseX+(Bar_X*3)&&a<=mouseX+(Bar_X*4)&&b>Bar_Y-10&&b<Bar_Y+20){
  d=-d;
  c=4;
 }
