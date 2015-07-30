@@ -3,32 +3,25 @@
       xmlns:th="http://www.thymeleaf.org">
 <head lang="ja">
     <meta charset="UTF-8" />
-    <link rel="stylesheet"
+     <title>トップページ</title>
+     <link rel="stylesheet"
           href="/static/bower_components/bootstrap/dist/css/bootstrap.css"
           th:href="@{/bower_components/bootstrap/dist/css/bootstrap.css}"/>
-    <script src="/static/bower_components/jquery/dist/jquery.js"
-            th:src="@{/bower_components/jquery/dist/jquery.js}"></script>
-    <script src="/static/bower_components/bootstrap/dist/js/bootstrap.js"
-            th:src="@{/bower_components/bootstrap/dist/js/bootstrap.js}"></script>
-    <title>トップページ</title>
+	<script type="text/javascript" src="/static/processing.min.js"
+	th:src="@{/processing.min.js}"></script>
 </head>
 <body>
-    <h1 th:text="${student.name}+さん、こんにちは"></h1>
-    <div>
-            <p class="bg-primary">HTML5</p>
-            <p class="bg-success">CSS3</p>
-            <p class="bg-info">JavaScript</p>
-            <p class="bg-warning">jQuery</p>
-            <p class="bg-danger">Bootstrap</p>
-        </div>
-    <a href="/users/list">ユーザーリスト</a>
-    <a href="/users/update">ユーザー情報更新</a>
-    <a href="/users/login">ログアウト</a>
+    <h1 class="jumbotron" th:text="${student.name}+さん、こんにちは"></h1>
+
+    <a class="glyphicon glyphicon-file" href="/users/list">ユーザーリスト</a>
+    <a class="glyphicon glyphicon-info-sign" href="/users/update">ユーザー情報更新</a>
+    <a class="glyphicon glyphicon-share-alt" href="/users/login">ログアウト</a>
     <form th:action="@{/users/toppage}" method="post" th:object="${studentForm}">
                         <input class="btn btn-default" type="submit" name="form" value="削除"/>
                         <input type="hidden" name="id" th:value="${student.id}"/>
                         <input type="hidden" name="name" th:value="${student.name}"/>
                         <input type="hidden" name="pass" th:value="${student.pass}"/>
-        </form>
+   </form>
+<canvas data-processing-sources="/block/block.pde"></canvas>
 </body>
 </html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html >
+<html  xmlns:th="http://www.thymeleaf.org">
+<head lang="ja">
+    <meta charset="UTF-8" />
+    <title>Record Writer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+     <link rel="stylesheet" type="text/css"
+          href="C:/Users/fumi/Documents/RecordWriteTemplate/src/main/resources/static/bower_components/bootstrap/dist/css/bootstrap.css"/>
+</head>
+<body>
+ <script type="text/javascript" src="C:/Users/fumi/Documents/RecordWriteTemplate/src/main/resources/static/bower_components/jquery/dist/jquery.js"></script>
+    <script type="text/javascript" src="C:/Users/fumi/Documents/RecordWriteTemplate/src/main/resources/static/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+<form action="./" method="post" th:object="${recordForm}">
+                        <h4 class="panel-title">
+
+                          <span class="label label-primary">
+                          	<span class="glyphicon glyphicon-bell" aria-hidden="true"></span>
+                         	 今日の出来事を記載する
+                          </span>
+                        </h4>
+    <label
+            for="title"><span class="label label-primary">Title</span></label>
+    <input
+            placeholder="今日は何がありましたか？"
+            name="title" id="title" th:field="*{title}" type="text"/>
+    <label
+            for="record"><span class="label label-primary">Record</span></label>
+                                    <textarea
+                                            name="record"
+                                            id="record"
+                                            cols="30"
+                                            rows="5"
+                                            placeholder="詳細に教えていただけますか？"
+                                            th:field="*{record}"></textarea>
+   <button type="submit" class="btn btn-lg btn-default">
+   	<span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>
+   	送信
+   </button>
+</form>
+
+<div th:each="record,iterStat  : ${records}" >
+    <h4 class="panel-title" th:text="${record.title}">
+    </h4>
+    <div class="panel-body" th:text="${record.record}">
+    </div>
+</div>
+
+</body>
+</html>

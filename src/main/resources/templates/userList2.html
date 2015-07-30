@@ -2,15 +2,19 @@
 <html>
 <head lang="ja">
     <meta charset="UTF-8" />
+     <link rel="stylesheet"
+          href="/static/bower_components/bootstrap/dist/css/bootstrap.css"
+          th:href="@{/bower_components/bootstrap/dist/css/bootstrap.css}"/>
     <title>ユーザー一覧</title>
 </head>
 <body>
-<table>
+<h1  class="jumbotron">ユーザーリスト</h1>
+<table class="table table-striped">
     <tr th:each="user :${users}">
         <td th:text="${user.id}"></td>
         <td th:text="${user.name}"></td>
     </tr>
 </table>
- <a href="/users/toppage">戻る</a>
+ <a class="glyphicon glyphicon-share-alt" href="/users/toppage">戻る</a>
 </body>
 </html>

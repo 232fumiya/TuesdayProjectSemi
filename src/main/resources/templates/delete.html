@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head lang="ja">
+ <link rel="stylesheet"
+          href="/static/bower_components/bootstrap/dist/css/bootstrap.css"
+          th:href="@{/bower_components/bootstrap/dist/css/bootstrap.css}"/>
     <meta charset="UTF-8" />
     <title>削除成功</title>
 </head>
 <body>
-    <h1>削除されました</h1>
-    <a href="/users/register">登録ページへ</a>
+    <h1 class="jumbotron">削除されました</h1>
+    <a class="glyphicon glyphicon-share-alt" href="/users/register">登録ページへ</a>
 </body>
 </html>

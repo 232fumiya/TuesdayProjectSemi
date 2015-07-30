@@ -2,25 +2,27 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head lang="ja">
-    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet"
+    href="/static/bower_components/bootstrap/dist/css/bootstrap.css"
+    th:href="@{/bower_components/bootstrap/dist/css/bootstrap.css}" />
     <meta charset="UTF-8" />
     <title>ユーザー登録</title>
 </head>
 <body>
-<h1>更新画面</h1>
+<h1  class="jumbotron">更新画面</h1>
 <form th:action="@{/users/update}" method="post" th:object="${updateForm}">
     <table>
         <tr>
             <td>
                 <span>Name:</span>
-                <input name = "name" type="text" th:field="*{name}" th:errorclass="error-input"/>
+                <input name = "name" class="form-control" type="text" th:field="*{name}" th:errorclass="error-input"/>
                 <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="error-message"></span>
             </td>
         </tr>
         <tr>
             <td>
                 <span>Pass:</span>
-                <input name = "pass" type="text" th:field="*{pass}" th:errorclass="error-input"/>
+                <input name = "pass" class="form-control" type="text" th:field="*{pass}" th:errorclass="error-input"/>
                 <span th:if="${#fields.hasErrors('pass')}" th:errors="*{pass}" class="error-message"></span>
             </td>
         </tr>
@@ -30,7 +32,7 @@
             </td>
         </tr>
     </table>
-    <a href="/users/toppage">戻る</a>
+    <a class="glyphicon glyphicon-share-alt" href="/users/toppage">戻る</a>
 </form>
 
 </body>

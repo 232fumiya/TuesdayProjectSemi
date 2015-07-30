@@ -2,42 +2,45 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head lang="ja">
-    <link rel="stylesheet" href="/css/style.css"/>
+     <link rel="stylesheet"
+          href="/static/bower_components/bootstrap/dist/css/bootstrap.css"
+          th:href="@{/bower_components/bootstrap/dist/css/bootstrap.css}"/>
+
     <meta charset="UTF-8" />
     <title>ユーザー登録</title>
 </head>
 <body>
-<h1>登録画面</h1>
+<h1  class="jumbotron">登録画面</h1>
 <form th:action="@{/users/register}" method="post" th:object="${studentForm}">
     <table>
         <tr>
             <td>
                 <span>ID:</span>
-                <input name = "id" type="text" th:field="*{id}" th:errorclass="error-input"/>
+                <input class="form-control" name = "id" type="text" th:field="*{id}" th:errorclass="error-input"/>
                 <span th:if="${#fields.hasErrors('id')}" th:errors="*{id}" class="error-message"></span>
             </td>
         </tr>
         <tr>
             <td>
                 <span>Name:</span>
-                <input name = "name" type="text" th:field="*{name}" th:errorclass="error-input"/>
+                <input class="form-control" name = "name" type="text" th:field="*{name}" th:errorclass="error-input"/>
                 <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="error-message"></span>
             </td>
         </tr>
         <tr>
             <td>
                 <span>Pass:</span>
-                <input name = "pass" type="text" th:field="*{pass}" th:errorclass="error-input"/>
+                <input class="form-control" name = "pass" type="text" th:field="*{pass}" th:errorclass="error-input"/>
                 <span th:if="${#fields.hasErrors('pass')}" th:errors="*{pass}" class="error-message"></span>
             </td>
         </tr>
         <tr>
             <td>
-                <input type="submit" value="登録"/>
+                 <button  type="submit"  class="btn btn-lg btn-default glyphicon glyphicon-ok" >登録</button>
             </td>
         </tr>
     </table>
 </form>
-<a href="/users/login">ログイン</a>
+<a class="glyphicon glyphicon-log-in" href="/users/login">ログイン</a>
 </body>
 </html>
